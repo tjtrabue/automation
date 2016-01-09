@@ -1,1 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
+
+export dls="~/Downloads"
+export sub_proj="~/Sublime_Projects"

@@ -4,10 +4,11 @@
 
 echo "This script will install the following:"
 echo "APPLICATIONS"
-echo "IntelliJ IDEA, Sublime Text 3, iTerm2"
+echo "IntelliJ IDEA, Sublime Text 3, iTerm2,"
+echo "DbVisualizer"
 echo ""
 echo "PLATFORMS:"
-echo "Groovy"
+echo "Groovy, Python, Perl, PostgresSQL"
 echo ""
 echo "TOOLS"
 echo "xCode command line tools, Homebrew, Brew Cask"
@@ -33,17 +34,29 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	brew install caskroom/cask/brew-cask
 	brew tap caskroom/cask
 
-	# Install Sublime Text:
+	# Update Homebrew:
+	brew update
+
+	# Install Applications:
 	brew cask install sublime-text3
-
-	# Install IntelliJ IDEA:
 	brew cask install intellij-idea
-
-	# Install iTerm2:
 	brew cask install iterm2
+	brew cask install dbvisualizer
 
-	# Install Groovy:
+	# Install perlbrew:
+	\curl -L http://install.perlbrew.pl | bash
+
+	# Install Development Platforms:
+	brew install ant
 	brew install groovy
+	brew install python
+	brew install perl
+	brew install scala # Set SCALA_HOME to /usr/local/opt/scala/idea
+
+	# Install Server and Database Software:
+	# Make sure to set TOMCAT_HOME in the ~/.vars file
+	brew install tomcat
+	brew install postgres
 
 	# Remove outdated versions from the cellar.
 	brew cleanup
