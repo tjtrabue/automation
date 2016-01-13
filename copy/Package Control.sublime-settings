@@ -37,6 +37,7 @@
 		"SublimeLinter-javac",
 		"SublimeLinter-jshint",
 		"SublimeLinter-json",
+		"SublimeREPL",
 		"Tag",
 		"Terminal",
 		"Theme - Flatland"

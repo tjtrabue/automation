@@ -8,10 +8,15 @@ local repo_copy="$repo_automation/copy"
 local repo_link="$repo_automation/link"
 local repo_source="$repo_automation/source"
 
-# Create a .automation folder in the user's home directory
-# to house all files:
+# Create the .automation file structure to hold all hidden environment files:
 mkdir ~/.automation
+mkdir ~/.automation/bin
+mkdir ~/.automation/link
+mkdir ~/.automation/source
 
+# Make hidden variables and directories files if they do not exist:
+if [[ ! -f ~/.vars ]] ; then cp "$repo_copy/.vars" ~/.vars ; fi
+if [[ ! -f ~/.dirs ]]; then cp "$repo_copy/.dirs" ~/.dirs ; fi
 
 # Create a directory for Sublime Text projects:
 mkdir ~/Sublime_Projects
