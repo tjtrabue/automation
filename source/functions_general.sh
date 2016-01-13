@@ -1,11 +1,4 @@
-#!/bin/bash
-
-#########################################
-##		 		 General	           ##
-#########################################
-
-alias sbp="source $HOME/.bash_profile"
-
+#!/bin/env bash
 
 #########################################
 ##		 Directory Manipulation	       ##
@@ -26,13 +19,31 @@ diralias () {
 
 
 #########################################
+##             Information             ##
+#########################################
+
+# Lists all scope extensions for Sublime snippets:
+sub_scopes () {
+ cat ~/.automation/sublime-scopes
+}
+
+#########################################
+##		 		Navigation	           ##
+#########################################
+
+# A wrapper for the cd function:
+cd () {
+
+}
+
+#########################################
 ##		 		Sourcing	           ##
 #########################################
 
-# Source all files in the hidden source folder
+# Source all files in the hidden automation folder:
 src () {
-	for f in ~/.dotfiles/source ; do
-		source f
+	for f in ~/.automation/source ; do
+		source $f
 	done
 }
 

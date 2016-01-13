@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env sh
 
 # End coloration
 NC='\033[0m'
