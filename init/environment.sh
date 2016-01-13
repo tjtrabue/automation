@@ -12,7 +12,6 @@ local repo_source="$repo_automation/source"
 mkdir ~/.automation
 mkdir ~/.automation/bin
 mkdir ~/.automation/link
-mkdir ~/.automation/source
 
 # Make hidden variables and directories files if they do not exist:
 if [[ ! -f ~/.vars ]] ; then cp "$repo_copy/.vars" ~/.vars ; fi
@@ -27,3 +26,9 @@ cp "$repo_copy/Package Control.sublime-package" ~/"Library/Application Support/S
 # Copy Sublime preference files:
 cp "$repo_copy/Package Control.sublime-settings" ~/"Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings"
 cp "$repo_copy/Preferences.sublime-settings" ~/"Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+
+# Copy scopes file for reference:
+cp "$repo_copy/snippet_scopes" ~/.automation/
+
+# Copy all hidden source files:
+rsync -av --progress "$repo_source" ~/.automation
