@@ -1,20 +1,30 @@
 #!/bin/env bash
 
 #########################################
+##              Sourcing               ##
+#########################################
+
+src () {
+	source ~/.bash_profile
+}
+
+
+#########################################
 ##		 Directory Manipulation	       ##
 #########################################
 
 diralias () {
-	if [[ -z $1 ]]; then
+	diralias_usage () {
 		echo "Creates a directory alias for the current directory"
 		echo "with the name supplied as an argument."
 		echo
 		echo "Usage: diralias <name of directory alias>"
-		return
-	fi
+	}
+
+
 
 	echo "export $1=`pwd`" >> ~.dirs
-	source ~.dirs
+	source ~/.dirs
 }
 
 
@@ -24,8 +34,9 @@ diralias () {
 
 # Lists all scope extensions for Sublime snippets:
 subscopes () {
- cat ~/.automation/snippet_scopes
+	cat ~/.automation/snippet_scopes
 }
+
 
 #########################################
 ##		 		Navigation	           ##

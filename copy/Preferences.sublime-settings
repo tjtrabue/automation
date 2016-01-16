@@ -1,13 +1,13 @@
 {
-	"color_scheme": "Packages/Colorcoder/Material-Theme-Darker (Colorcoded).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Material-Theme-Darker-OceanicNext (SL).tmTheme",
 	"detect_indentation": true,
 	"draw_white_space": "all",
 	"ignored_packages":
 	[
-		"Markdown",
-		"Vintage"
+		"Vintage",
+		"Markdown"
 	],
-	"original_color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+	"original_color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"tab_size": 4,
 	"theme": "Material-Theme-Darker.sublime-theme",
 	"translate_tabs_to_spaces": true,

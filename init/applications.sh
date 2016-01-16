@@ -12,7 +12,7 @@ brew cask install iterm2
 brew cask install dbvisualizer
 
 # Install perlbrew:
-\curl -L http://install.perlbrew.pl | bash
+curl -L http://install.perlbrew.pl | bash
 
 # Install Development Platforms:
 brew install ant
