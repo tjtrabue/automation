@@ -20,6 +20,9 @@ if [[ ! -f ~/.dirs ]]; then cp "$repo_copy/.dirs" ~/.dirs ; fi
 # Create a directory for Sublime Text projects:
 mkdir ~/Sublime_Projects
 
+# Create a Workspace directory for all business projects:
+mkdir ~/Workspace
+
 # Install Package Control plugin on the new Sublime installation:
 cp "$repo_copy/Package Control.sublime-package" ~/"Library/Application Support/Sublime Text 3/Installed Packages/Package Control.sublime-package"
 
@@ -30,5 +33,5 @@ cp "$repo_copy/Preferences.sublime-settings" ~/"Library/Application Support/Subl
 # Copy scopes file for reference:
 cp "$repo_copy/snippet_scopes" ~/.automation/
 
-# Copy all hidden source files:
+# Copy all source files:
 rsync -av --progress "$repo_source" ~/.automation

@@ -23,8 +23,8 @@ diralias () {
 #########################################
 
 # Lists all scope extensions for Sublime snippets:
-sub_scopes () {
- cat ~/.automation/sublime-scopes
+subscopes () {
+ cat ~/.automation/snippet_scopes
 }
 
 #########################################
