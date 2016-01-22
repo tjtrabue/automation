@@ -1,8 +1,9 @@
 #!/bin/env bash
 
-brew update
+# brew update
+# brew cleanup
 
-for f in ../source/; do
-    cp $f ~/".automation/source/$f"
-    source ~/".automation/source/$f"
+for f in ./source/*; do
+    cp $f ~/".automation/source/$(basename $f)"
+    source ~/".automation/source/$(basename $f)"
 done

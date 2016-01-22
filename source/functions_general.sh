@@ -6,7 +6,12 @@
 
 src ()
 {
-	source ~/.bash_profile
+    source ~/.bash_profile
+
+    # Source all dev files from automation project:
+    for file in ~/.automation/source/*; do
+        [ -r "$file" ] && [ -f "$file" ] && source "$file";
+    done
 }
 
 #########################################
@@ -37,6 +42,7 @@ shortpath ()
     }
 }
 
+# Makes an alias for
 diralias ()
 {
     local short_path="`shortpath "$(pwd)"`";
@@ -53,13 +59,13 @@ diralias ()
 # Lists all scope extensions for Sublime snippets:
 subscopes ()
 {
-	cat ~/.automation/snippet_scopes
+    cat ~/.automation/snippet_scopes
 }
 
 # Used for printing errors:
 echoe ()
 {
-	echo -e "${RED}Error${NC}: $@" 1>&2
+    echo "${RED}Error${NC}: $@" 1>&2
 }
 
 #########################################
@@ -67,22 +73,10 @@ echoe ()
 #########################################
 
 # A wrapper for the cd function:
-cd ()
-{
+# cd ()
+# {
 
-}
-
-#########################################
-##		 		Sourcing	           ##
-#########################################
-
-# Source all files in the hidden automation folder:
-src ()
-{
-	for f in ~/.automation/source ; do
-		source $f
-	done
-}
+# }
 
 
 

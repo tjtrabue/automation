@@ -42,7 +42,7 @@ gacp () {
     local remote_branch="master"
 
     local OPTIND o
-        while getopts ":m:a:b:" o; do
+        while getopts ":m:b:" o; do
             case "${o}" in
                 m)
                     commit_message="${OPTARG}"

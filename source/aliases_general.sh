@@ -8,3 +8,6 @@ alias lsa="ls -a"
 
 alias rmr="rm -r"
 alias rmrf="rm -rf"
+
+alias svars=subl\ ~/.vars
+alias sdirs=subl\ ~/.dirs
