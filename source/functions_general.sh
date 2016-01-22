@@ -4,9 +4,9 @@
 ##              Sourcing               ##
 #########################################
 
+# Sources all automation files:
 src ()
 {
-    # Source all dev files from automation project:
     for file in ~/.automation/source/* ~/.{vars, dirs}; do
         [ -r "$file" ] && [ -f "$file" ] && source "$file";
     done
@@ -49,6 +49,10 @@ diralias ()
     sdirs
 }
 
+# Returns the name of the directory of the script that this function is called from
+filedir () {
+    echo "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+}
 
 #########################################
 ##             Information             ##

@@ -3,10 +3,10 @@
 # Place all necessary folders and files on the filesystem for development
 
 # Local variables for referencing project folders:
-local repo_automation=".."
-local repo_copy="$repo_automation/copy"
-local repo_link="$repo_automation/link"
-local repo_source="$repo_automation/source"
+repo_automation=`pwd`
+repo_copy="$repo_automation/copy"
+repo_link="$repo_automation/link"
+repo_source="$repo_automation/source"
 
 # Create the .automation file structure to hold all hidden environment files:
 mkdir ~/.automation
@@ -14,7 +14,7 @@ mkdir ~/.automation/bin
 mkdir ~/.automation/link
 
 # Make hidden variables and directories files if they do not exist:
-if [[ ! -f ~/.vars ]] ; then cp "$repo_copy/.vars" ~/.vars ; fi
+if [[ ! -f ~/.vars ]]; then cp "$repo_copy/.vars" ~/.vars ; fi
 if [[ ! -f ~/.dirs ]]; then cp "$repo_copy/.dirs" ~/.dirs ; fi
 
 # Create a directory for Sublime Text projects:
