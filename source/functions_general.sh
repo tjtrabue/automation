@@ -6,10 +6,8 @@
 
 src ()
 {
-    source ~/.bash_profile
-
     # Source all dev files from automation project:
-    for file in ~/.automation/source/*; do
+    for file in ~/.automation/source/* ~/.{vars, dirs}; do
         [ -r "$file" ] && [ -f "$file" ] && source "$file";
     done
 }
@@ -42,7 +40,7 @@ shortpath ()
     }
 }
 
-# Makes an alias for
+# Makes an alias for the current working directory:
 diralias ()
 {
     local short_path="`shortpath "$(pwd)"`";

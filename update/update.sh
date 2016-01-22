@@ -1,7 +1,7 @@
 #!/bin/env bash
 
-# brew update
-# brew cleanup
+brew update
+brew cleanup
 
 for f in ./source/*; do
     cp $f ~/".automation/source/$(basename $f)"
