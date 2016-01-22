@@ -31,6 +31,12 @@ gacp () {
         return
     fi
 
+    if [[ `isrepo` == "false" ]]; then
+        echo "Not a git repository" 1>&2
+        echo "Aborting" 1>&2
+        return
+    fi
+
     # Local variables
     local commit_message=""
     local remote_branch="master"
@@ -69,3 +75,27 @@ gacp () {
 #########################################
 ##              Branching              ##
 #########################################
+
+# Alias function for making a new branch:
+nb () {
+    git checkout -b "$@"
+}
+
+
+#########################################
+##                 Info                ##
+#########################################
+
+# Determines whether or not the current directory is in a git
+# repository:
+isrepo () {
+    if git rev-parse --git-dir >> /dev/null 2>&1; then
+        echo "true"
+    else
+        echo "false"
+    fi
+}
+
+
+
+

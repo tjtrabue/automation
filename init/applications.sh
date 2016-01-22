@@ -7,7 +7,7 @@ brew update
 
 # Install Applications:
 brew cask install sublime-text3
-brew cask install intellij-idea
+brew cask install intellij-idea-ce
 brew cask install iterm2
 brew cask install dbvisualizer
 
@@ -25,6 +25,7 @@ brew install scala # Set SCALA_HOME to /usr/local/opt/scala/idea
 # Make sure to set TOMCAT_HOME in the ~/.vars file
 brew install tomcat
 brew install postgres
+brew install mysql
 
 # Remove outdated versions from the cellar.
 brew cleanup
