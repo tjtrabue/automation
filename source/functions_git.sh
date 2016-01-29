@@ -96,6 +96,42 @@ isrepo () {
     fi
 }
 
+#########################################
+##                Editor               ##
+#########################################
+
+# Changes the designated git editor.
+# Options are Sublime, Atom, and Vim:
+switchgeditor () {
+    if [[ "$#" -ne 1 ]]; then
+        echoe "No editor name supplied."
+        echo "Valid options are sublime, atom, and vim." 1>&2
+        return 1
+    fi
+
+    case "${1}" in
+        "sublime")
+            git config --global core.editor "subl -w"
+            ;;
+        "atom")
+            git config --global core.editor "atom --wait"
+            ;;
+        "vim")
+            git config --global core.editor "vim"
+            ;;
+        *)
+            echoe "Unknown operand $1."
+            echo "Please enter sublime, atom, or vim as an" 1>&2
+            echo "argument to this function." 1>&2
+            return 1
+            ;;
+    esac
+}
+
+
+
+
+
 
 
 

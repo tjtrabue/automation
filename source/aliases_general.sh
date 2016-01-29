@@ -16,3 +16,5 @@ alias path="echo $PATH"
 
 # Returns the name of the directory of the script that this function is called from:
 alias filedir=`echo "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"`
+
+alias chx="chmod +x"

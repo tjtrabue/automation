@@ -12,6 +12,12 @@ src ()
     done
 }
 
+
+#########################################
+##           File Manipulation         ##
+#########################################
+
+
 #########################################
 ##		 Directory Manipulation	       ##
 #########################################
@@ -53,6 +59,8 @@ diralias ()
 ##              Navigation             ##
 #########################################
 
+# Wrapper for the cd function that adds some memory
+# to it for retracing directories.
 cd ()
 {
     local adir;
@@ -133,5 +141,42 @@ echoe ()
     echo "${RED}Error${NC}: $@" 1>&2
 }
 
+# Prints useful network information regarding open
+# connections.
+netinfo () {
+    netinfo_usage () {
+        echo "Prints out information about open network" 1>&2
+        echo "connections." 1>&2
+        echo "USAGE:" 1>&2
+        echo "netinfo [options]" 1>&2
+        echo "OPTIONS:" 1>&2
+        echo "  -l : shortens info to app name, protocol, and hostname:portnumber" 1>&2
+    }
 
+    if [[ "$1" == "--help" || "$1" == "-h" ]]; then
+        echo netinfo_usage
+        return 1
+    fi
+
+    local OPTIND o
+    local less="false"
+        while getopts ":l" o; do
+            case "${o}" in
+                l)
+                    less="true"
+                    ;;
+                *)
+                    netinfo_usage
+                    return 1
+                    ;;
+            esac
+        done
+        shift $((OPTIND-1))
+
+        if [[ "$less" == "true" ]]; then
+            lsof -i | grep -E "(LISTEN|ESTABLISHED)" | awk '{print $1, $8, $9}'
+        else
+            lsof -i | grep -E "(LISTEN|ESTABLISHED)"
+        fi
+}
 
