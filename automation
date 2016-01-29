@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 # Where all the good stuff goes down.
 
@@ -10,11 +10,12 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 if [[ ! -d ~/.automation ]]; then
-    source ./init/install_homebrew.sh
+    ./init/install_homebrew
     source ./dotfiles/bootstrap.sh
     source ./dotfiles/brew.sh
-    source ./init/applications.sh
-    source ./init/environment.sh
+    ./init/applications
+    ./init/environment
+    ./bin/install_package_control
 else
-    source ./update/update.sh
+    ./update/update
 fi

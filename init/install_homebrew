@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 # Install xCode commandline tools if they do not already exist:
 if [[ `"xcode-select -p"` == 2 ]]; then
@@ -17,4 +17,5 @@ if [[ $? != 0 ]] ; then
     brew install caskroom/cask/brew-cask
 else
     brew update
+    brew upgrade
 fi

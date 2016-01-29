@@ -1,6 +1,7 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 brew update
+brew upgrade
 brew cleanup
 
 for f in ./source/*; do

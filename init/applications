@@ -27,5 +27,9 @@ brew install tomcat
 brew install postgres
 brew install mysql
 
+# Install utilities:
+brew install shellcheck
+npm install -g jshint
+
 # Remove outdated versions from the cellar.
 brew cleanup

@@ -7,7 +7,7 @@
 # Sources all automation files:
 src ()
 {
-    for file in ~/.automation/source/* ~/.{vars, dirs}; do
+    for file in ~/.automation/source/* ~/.{vars,dirs}; do
         [ -r "$file" ] && [ -f "$file" ] && source "$file";
     done
 }
@@ -49,10 +49,73 @@ diralias ()
     sdirs
 }
 
-# Returns the name of the directory of the script that this function is called from
-filedir () {
-    echo "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+#########################################
+##              Navigation             ##
+#########################################
+
+cd ()
+{
+    local adir;
+    local -i cnt;
+    if [[ $1 == "--" ]]; then
+        dirs -v;
+        return 0;
+    fi;
+    local the_new_dir="${1:-$HOME}";
+    [[ ${the_new_dir:0:1} == '-' ]] && the_new_dir="`translate_dir_hist "$the_new_dir"`";
+    [[ ${the_new_dir:0:1} == '~' ]] && the_new_dir="${HOME}${the_new_dir:1}";
+    [[ -e "$the_new_dir" ]] || {
+        local temp="`env | grep "^${the_new_dir%%/*}=" | sed 's/.*=//'`";
+        [[ -z $temp ]] && {
+            echo "Error: $the_new_dir does not exist." 1>&2;
+            return 1
+        };
+        [[ $the_new_dir == */* ]] && temp="$temp/${the_new_dir#*/}";
+        the_new_dir="$temp"
+    };
+    pushd "$the_new_dir" > /dev/null;
+    [[ $? -ne 0 ]] && return 1;
+    the_new_dir="$(pwd)";
+    popd -n +11 2> /dev/null > /dev/null;
+    for ((cnt=1; cnt <= 10; cnt++))
+    do
+        local x2="$(dirs +${cnt} 2>/dev/null)";
+        [[ $? -ne 0 ]] && return 0;
+        [[ ${x2:0:1} == '~' ]] && x2="${HOME}${x2:1}";
+        if [[ "${x2}" == "${the_new_dir}" ]]; then
+            popd -n +$cnt 2> /dev/null > /dev/null;
+            ((cnt=cnt-1));
+        fi;
+    done;
+    return 0
 }
+
+
+#########################################
+##            PATH/Variables           ##
+#########################################
+
+# Adds a directory to the PATH environment variable.
+# By default adds the working directory, but can take
+# an argument as well:
+atp () {
+    if [[ "$#" -ne 1 ]]; then
+        local to_add=$(shortpath `pwd`);
+    else
+        local to_add=$(shortpath `$1`);
+    fi
+
+    echo $PATH | grep -q "$to_add"
+
+    if [ $? -ne 0 ]; then
+        PATH=$PATH:$to_add
+        sed -i "" "/^export\ PATH=/d" ~/.path
+        echo "export PATH=$PATH" >> ~/.path
+        source ~/.path
+        src
+    fi
+}
+
 
 #########################################
 ##             Information             ##
@@ -69,16 +132,6 @@ echoe ()
 {
     echo "${RED}Error${NC}: $@" 1>&2
 }
-
-#########################################
-##		 		Navigation	           ##
-#########################################
-
-# A wrapper for the cd function:
-# cd ()
-# {
-
-# }
 
 
 

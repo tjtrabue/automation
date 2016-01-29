@@ -3,7 +3,7 @@
 # Place all necessary folders and files on the filesystem for development
 
 # Local variables for referencing project folders:
-repo_automation=`pwd`
+repo_automation="`dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )`"
 repo_copy="$repo_automation/copy"
 repo_link="$repo_automation/link"
 repo_source="$repo_automation/source"
@@ -22,9 +22,6 @@ mkdir ~/Sublime_Projects
 
 # Create a Workspace directory for all business projects:
 mkdir ~/Workspace
-
-# Install Package Control plugin on the new Sublime installation:
-cp "$repo_copy/Package Control.sublime-package" ~/"Library/Application Support/Sublime Text 3/Installed Packages/Package Control.sublime-package"
 
 # Copy Sublime preference files:
 cp "$repo_copy/Package Control.sublime-settings" ~/"Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings"
