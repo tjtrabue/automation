@@ -10,11 +10,11 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 if [[ ! -d ~/.automation ]]; then
-    ./init/install_homebrew
+    ./bin/install_homebrew
     source ./dotfiles/bootstrap.sh
     source ./dotfiles/brew.sh
-    ./init/applications
-    ./init/environment
+    ./bin/applications
+    ./bin/environment
     ./bin/install_package_control
 else
     ./update/update
