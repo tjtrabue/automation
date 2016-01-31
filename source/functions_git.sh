@@ -27,14 +27,14 @@ gacp () {
     }
 
     if [[ "$1" == "--help" || "$1" == "-h" ]]; then
-        echo gacp_usage
-        return
+        gacp_usage
+        return 1
     fi
 
     if [[ `isrepo` == "false" ]]; then
         echo "Not a git repository" 1>&2
         echo "Aborting" 1>&2
-        return
+        return 1
     fi
 
     # Local variables
@@ -51,7 +51,7 @@ gacp () {
                     remote_branch="${OPTARG}"
                     ;;
                 *)
-                    func_usage
+                    gacp_usage
                     return
                     ;;
             esac
