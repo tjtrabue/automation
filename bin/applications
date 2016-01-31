@@ -31,5 +31,10 @@ brew install mysql
 brew install shellcheck
 npm install -g jshint
 
+# Install pathogen for vim plugins:
+# Check installation instructions at
+# https://github.com/tpope/vim-pathogen
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
 # Remove outdated versions from the cellar.
 brew cleanup

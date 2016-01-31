@@ -31,4 +31,4 @@ cp "$repo_copy/Preferences.sublime-settings" ~/"Library/Application Support/Subl
 cp "$repo_copy/snippet_scopes" ~/.automation/
 
 # Copy all source files:
-rsync -av --progress "$repo_source" ~/.automation
+rsync -avP "$repo_source" ~/.automation

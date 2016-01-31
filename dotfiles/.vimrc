@@ -3,6 +3,8 @@ set background=dark
 colorscheme solarized
 let g:solarized_termtrans=1
 
+" Make jk a shortcut for exiting insert mode
+inoremap jk <ESC>
 " Make Vim more useful
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
@@ -20,7 +22,9 @@ set gdefault
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
 " Change mapleader
-let mapleader=","
+let mapleader = "\<Space>"
+" Add pathogen functionality for handling plugins
+execute pathogen#infect()
 " Don’t add empty newlines at the end of files
 set binary
 set noeol
