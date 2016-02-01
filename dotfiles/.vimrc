@@ -24,9 +24,12 @@ set encoding=utf-8 nobomb
 " Change mapleader
 let mapleader = "\<Space>"
 
+" Map ENTER and Shift-ENTER to add a new line
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>
+
 " Add pathogen functionality for handling plugins
 execute pathogen#infect()
-call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 " Don’t add empty newlines at the end of files
