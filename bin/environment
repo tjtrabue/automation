@@ -18,7 +18,7 @@ if [[ ! -f ~/.vars ]]; then cp "$repo_copy/.vars" ~/.vars ; fi
 if [[ ! -f ~/.dirs ]]; then cp "$repo_copy/.dirs" ~/.dirs ; fi
 
 # Create a directory for Sublime Text projects:
-mkdir ~/Sublime_Projects
+mkdir ~/SublimeProjects
 
 # Create a Workspace directory for all business projects:
 mkdir ~/Workspace

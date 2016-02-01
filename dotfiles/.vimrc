@@ -23,8 +23,12 @@ set gdefault
 set encoding=utf-8 nobomb
 " Change mapleader
 let mapleader = "\<Space>"
+
 " Add pathogen functionality for handling plugins
 execute pathogen#infect()
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 " Don’t add empty newlines at the end of files
 set binary
 set noeol
@@ -34,6 +38,13 @@ set directory=~/.vim/swaps
 if exists("&undodir")
 	set undodir=~/.vim/undo
 endif
+" Convert tabs to spaces
+set tabstop=4
+set shiftwidth=4
+set expandtab
+retab
+" Add closing brace
+inoremap { {<CR>}<Esc>ko
 
 " Don’t create backups when editing files in certain directories
 set backupskip=/tmp/*,/private/tmp/*

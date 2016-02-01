@@ -16,6 +16,7 @@ if [[ ! -d ~/.automation ]]; then
     ./bin/applications
     ./bin/environment
     ./bin/install_package_control
+    ./bin/install_pathogen_and_plugins
 else
     ./update/update
 fi
